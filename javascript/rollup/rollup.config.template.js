@@ -3,6 +3,7 @@ import dts from 'rollup-plugin-dts'
 import esbuild from 'rollup-plugin-esbuild'
 import styles from "rollup-plugin-styles";
 import json from '@rollup/plugin-json';
+import image from '@rollup/plugin-image';
 
 const isBinBuild = "TMPL_build_target_type" === 'CLI';
 
@@ -35,7 +36,8 @@ if (isBinBuild) {
         styles({
           modules: true,
         }),
-        json()
+        json(),
+        image()
       ],
       output: [
         !TMPL_esm_only && {
